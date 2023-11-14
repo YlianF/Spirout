@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxdsvh1nt5yil"]
+
+[ext_resource type="SpriteFrames" uid="uid://mgqoruxpbln8" path="res://animations/spirit/sword/idle.tres" id="1_7wxmf"]
+[ext_resource type="Script" path="res://scripts/sword.cs" id="1_pbsxt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ijcu"]
+size = Vector2(53, 205)
+
+[node name="sword" type="Area2D"]
+rotation = 3.14159
+script = ExtResource("1_pbsxt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_7wxmf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5.5, -56.5)
+shape = SubResource("RectangleShape2D_6ijcu")

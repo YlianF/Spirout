@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://bdsu2qq7usp02"]
+
+[ext_resource type="Script" path="res://scripts/Spirit.cs" id="1_iy8gs"]
+[ext_resource type="SpriteFrames" uid="uid://x83dkmnohs7x" path="res://animations/spirit/idle.tres" id="1_jwasc"]
+[ext_resource type="PackedScene" uid="uid://bigqspinvy0lp" path="res://character/left_arm.tscn" id="3_qvitm"]
+[ext_resource type="PackedScene" uid="uid://bxdsvh1nt5yil" path="res://character/sword.tscn" id="4_yjcg3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ay8ts"]
+radius = 82.0061
+
+[node name="Spirit" type="Area2D"]
+script = ExtResource("1_iy8gs")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ay8ts")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_jwasc")
+
+[node name="left_arm" parent="." instance=ExtResource("3_qvitm")]
+position = Vector2(150, 150)
+
+[node name="sword" parent="." instance=ExtResource("4_yjcg3")]
+position = Vector2(150, 150)

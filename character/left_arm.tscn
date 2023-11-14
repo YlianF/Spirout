@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bigqspinvy0lp"]
+
+[ext_resource type="SpriteFrames" uid="uid://crqatrigb1rgg" path="res://animations/spirit/left_arm/idle.tres" id="1_0u2t6"]
+[ext_resource type="Script" path="res://scripts/left_arm.cs" id="1_3ps13"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q4bw5"]
+size = Vector2(156, 324)
+
+[node name="left_arm" type="Area2D"]
+script = ExtResource("1_3ps13")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-9, 1)
+shape = SubResource("RectangleShape2D_q4bw5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_0u2t6")
