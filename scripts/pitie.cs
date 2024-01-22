@@ -1,13 +1,13 @@
 using Godot;
 using System;
 
-public partial class Spirit : Area2D
+public partial class pitie : CharacterBody2D
 {
 	[Export]
 	public int Speed { get; set; } = 400;
 	
-	public Area2D left;
-	public Area2D right;
+	public CharacterBody2D left;
+	public CharacterBody2D right;
 
 	public AnimatedSprite2D animatedSprite2D;
 	
@@ -16,8 +16,8 @@ public partial class Spirit : Area2D
 
 	public override void _Ready()
 	{
-		var left_arm = GetNode<Area2D>("%left_arm");
-		var sword = GetNode<Area2D>("%sword");
+		var left_arm = GetNode<CharacterBody2D>("%left_arm");
+		var sword = GetNode<CharacterBody2D>("%sword");
 
 		left_arm.Hide();
 		sword.Hide();
@@ -31,13 +31,13 @@ public partial class Spirit : Area2D
 		_move(delta);
 		
 		if (Input.IsActionPressed("left_arm")) {
-			var new_arm = GetNode<Area2D>("sword");
+			var new_arm = GetNode<CharacterBody2D>("sword");
 			new_arm.Hide();
 			_left_arm(new_arm); 
 		}
 		
 		if (Input.IsActionPressed("right_arm")) {
-			var new_arm = GetNode<Area2D>("left_arm");
+			var new_arm = GetNode<CharacterBody2D>("left_arm");
 			new_arm.Hide();
 			_right_arm(new_arm); 
 		}
@@ -52,18 +52,25 @@ public partial class Spirit : Area2D
 	}
 	
 	public void _move(double delta) {
-		var velocity = Vector2.Zero;
 
-		if (Input.IsActionPressed("right")) { velocity.X += 1; }
+		Vector2 velocity = Velocity;
 
-		if (Input.IsActionPressed("left")) { velocity.X -= 1; }
+		// Get the input direction and handle the movement/deceleration.
+		// As good practice, you should replace UI actions with custom gameplay actions.
+		Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
+		if (direction != Vector2.Zero)
+		{
+			velocity.X = direction.X * Speed;
+			velocity.Y = direction.Y * Speed;
+		}
+		else
+		{
+			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+			velocity.Y = Mathf.MoveToward(Velocity.Y, 0, Speed);
+		}
 
-		if (Input.IsActionPressed("down")) { velocity.Y += 1; }
-
-		if (Input.IsActionPressed("up")) { velocity.Y -= 1; }
-		
-		velocity = velocity.Normalized() * Speed;
-		Position += velocity * (float)delta;
+		Velocity = velocity;
+		MoveAndSlide();
 		var animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		
 		if (velocity.X != 0)
@@ -72,7 +79,7 @@ public partial class Spirit : Area2D
 		}
 	}
 	
-	public void _left_arm(Area2D wpn) {
+	public void _left_arm(CharacterBody2D wpn) {
 		left = wpn;
 		if (right == wpn) {
 			right = null;
@@ -85,7 +92,7 @@ public partial class Spirit : Area2D
 		left.Show();
 	}
 	
-	public void _right_arm(Area2D wpn) {
+	public void _right_arm(CharacterBody2D wpn) {
 
 		if (left == wpn) {
 			left = null;

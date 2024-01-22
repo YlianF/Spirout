@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://dinu6tdnpl5r8"]
+
+[ext_resource type="PackedScene" uid="uid://bxdsvh1nt5yil" path="res://character/sword.tscn" id="1_i63bx"]
+[ext_resource type="Script" path="res://scripts/pitie.cs" id="1_uvyll"]
+[ext_resource type="PackedScene" uid="uid://bigqspinvy0lp" path="res://character/left_arm.tscn" id="3_axm0n"]
+[ext_resource type="SpriteFrames" uid="uid://x83dkmnohs7x" path="res://animations/spirit/idle.tres" id="4_8gj1d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kjenw"]
+radius = 79.0
+
+[node name="spirit" type="CharacterBody2D"]
+collision_layer = 2
+motion_mode = 1
+script = ExtResource("1_uvyll")
+
+[node name="sword" parent="." instance=ExtResource("1_i63bx")]
+unique_name_in_owner = true
+position = Vector2(150, 150)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_kjenw")
+
+[node name="left_arm" parent="." instance=ExtResource("3_axm0n")]
+unique_name_in_owner = true
+position = Vector2(150, 150)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("4_8gj1d")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.4, 0.4)

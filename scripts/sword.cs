@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class sword : Area2D
+public partial class sword : CharacterBody2D
 {
 	PackedScene sword_attack;
 	public int cooldown = 0;
@@ -27,8 +27,8 @@ public partial class sword : Area2D
 	public void _attack() {
 		if (cooldown == 0) {
 			var instance = sword_attack.Instantiate();
-			AddChild(instance);
-
+			GetParent().AddChild(instance);
+			Hide();
 			cooldown = max_cooldown;
 		}
 	}

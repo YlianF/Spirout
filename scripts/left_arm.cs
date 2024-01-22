@@ -1,9 +1,8 @@
 using Godot;
 using System;
 
-public partial class left_arm : Area2D
+public partial class left_arm : CharacterBody2D
 {
-	
 	PackedScene arm_attack;
 	public int cooldown = 0;
 	public int max_cooldown = 45;
@@ -27,8 +26,7 @@ public partial class left_arm : Area2D
 	public void _attack() {
 		if (cooldown == 0) {
 			var instance = arm_attack.Instantiate();
-			var scene = GetParent().GetParent();
-			scene.AddChild(instance);
+			GetParent().AddChild(instance);
 			Hide();
 			cooldown = max_cooldown;
 		}

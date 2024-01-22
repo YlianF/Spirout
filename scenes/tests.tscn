@@ -1,7 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://51qe2tpw3xat"]
+[gd_scene load_steps=3 format=3 uid="uid://51qe2tpw3xat"]
 
-[ext_resource type="PackedScene" uid="uid://bdsu2qq7usp02" path="res://character/Spirit.tscn" id="1_k86y2"]
+[ext_resource type="PackedScene" uid="uid://cwefqbtkn53kc" path="res://tilemaps/tiletest.tscn" id="1_kbtrp"]
+[ext_resource type="PackedScene" uid="uid://dinu6tdnpl5r8" path="res://scenes/spirit.tscn" id="2_movk1"]
 
 [node name="tests" type="Node2D"]
 
-[node name="Spirit" parent="." instance=ExtResource("1_k86y2")]
+[node name="tiletest" parent="." instance=ExtResource("1_kbtrp")]
+layer_0/name = "dj"
+
+[node name="spirit" parent="tiletest" instance=ExtResource("2_movk1")]
+position = Vector2(471, 287)
+motion_mode = 1

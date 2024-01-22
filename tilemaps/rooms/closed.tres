@@ -1,0 +1,6 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dswm28fkwhtrg"]
+
+[ext_resource type="Script" path="res://tilemaps/room_scripts/closed.cs" id="1_fhd6g"]
+
+[resource]
+script = ExtResource("1_fhd6g")

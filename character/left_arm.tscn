@@ -4,13 +4,15 @@
 [ext_resource type="Script" path="res://scripts/left_arm.cs" id="1_3ps13"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q4bw5"]
-size = Vector2(156, 324)
+size = Vector2(156, 177)
 
-[node name="left_arm" type="Area2D"]
+[node name="left_arm" type="CharacterBody2D"]
+collision_layer = 2
+motion_mode = 1
 script = ExtResource("1_3ps13")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-9, 1)
+position = Vector2(-9, 74.5)
 shape = SubResource("RectangleShape2D_q4bw5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
