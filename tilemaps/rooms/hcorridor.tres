@@ -1,3 +1,6 @@
-[gd_resource type="Resource" format=3 uid="uid://dic1x7ohnspf4"]
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dic1x7ohnspf4"]
+
+[ext_resource type="Script" path="res://tilemaps/room_scripts/hcorridor.cs" id="1_6ixmt"]
 
 [resource]
+script = ExtResource("1_6ixmt")

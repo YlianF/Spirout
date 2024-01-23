@@ -4,7 +4,7 @@ using System;
 public partial class pitie : CharacterBody2D
 {
 	[Export]
-	public int Speed { get; set; } = 400;
+	public int Speed { get; set; } = 650;
 	
 	public CharacterBody2D left;
 	public CharacterBody2D right;
@@ -29,6 +29,16 @@ public partial class pitie : CharacterBody2D
 	public override void _Process(double delta)
 	{
 		_move(delta);
+		
+		if (left != null) {
+			left.GlobalPosition = GlobalPosition + new Vector2(150, 150);
+			left.MoveAndSlide();
+		}
+		
+		if (right != null) {
+			right.GlobalPosition = GlobalPosition + new Vector2(-150, 150);
+			right.MoveAndSlide();
+		}
 		
 		if (Input.IsActionPressed("left_arm")) {
 			var new_arm = GetNode<CharacterBody2D>("sword");

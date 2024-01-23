@@ -15,6 +15,8 @@ public partial class left_arm : CharacterBody2D
 
 	public override void _PhysicsProcess(double delta)
 	{
+		MoveAndSlide();
+
 		if (cooldown > 0) {
 			cooldown--;
 		}
@@ -31,5 +33,4 @@ public partial class left_arm : CharacterBody2D
 			cooldown = max_cooldown;
 		}
 	}
-	
 }

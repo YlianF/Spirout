@@ -16,5 +16,5 @@ position = Vector2(1, -193)
 shape = SubResource("RectangleShape2D_hg3cy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
-position = Vector2(6, -134)
+position = Vector2(7, -253)
 sprite_frames = ExtResource("1_idtah")

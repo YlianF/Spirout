@@ -4,11 +4,12 @@
 [ext_resource type="Script" path="res://scripts/sword.cs" id="1_pbsxt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ijcu"]
-size = Vector2(110, 241)
+size = Vector2(110, 40)
 
 [node name="sword" type="CharacterBody2D"]
 rotation = 3.14159
-collision_layer = 2
+collision_layer = 3
+collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_pbsxt")
 
@@ -16,5 +17,5 @@ script = ExtResource("1_pbsxt")
 sprite_frames = ExtResource("1_7wxmf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-33.9999, -38.5001)
+position = Vector2(-34, 140)
 shape = SubResource("RectangleShape2D_6ijcu")
